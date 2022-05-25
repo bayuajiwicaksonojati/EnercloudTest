@@ -33,6 +33,7 @@ public class UnitTest
         yield return new object[]{new List<int>(){9,13}, "I wAnT IcE CrEaM", "e"};
         yield return new object[]{new List<int>(){7}, "I wAnT IcE CrEaM", "ICE"};
         yield return new object[]{new List<int>(){}, "I wAnT IcE CrEaM", "potato"};
+        yield return new object[]{new List<int>(){0,2,4,6,8}, "okokokokok", "ok"};
     }
 
     public static IEnumerable<object[]> allIndexOf_failingTestData()

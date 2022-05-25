@@ -36,7 +36,7 @@ export default function StringComparer(){
                     setoccurenceIndexes(response.data.data);
                     setfulltextJustSubmitted(fulltextInput)
                     settesttextJustSubmitted(testtextInput);
-                    sethtmlElementOfFullText(fulltextInput.replaceAll(testtextInput, `<span class="text-black text-bold">${testtextInput}</span>`))
+                    sethtmlElementOfFullText(fulltextInput.replaceAll(testtextInput, `<u class="text-black text-bold">${testtextInput}</u>`))
 
                     console.log(response)
                 }
@@ -52,11 +52,12 @@ export default function StringComparer(){
         <React.Fragment>
             <h2>String Comparer</h2>
             <p className="text-caption">The string comparer help you find occurences of text within a text. It uses 2 different text, one is the full text, the other one is the comparer. It will highlight the occurences and tells you how many times the comparer text occured within the main text</p>
+            <p className="text-caption">Note : full text and comparer text is not modified. For example if the text and comparer text contains white spaces as first or last character, it will not be removed</p>
             <hr/>
             {
                 isLoading || fulltextJustSubmitted == '' ? null :
                     <React.Fragment>
-                        <h6>Full Text contains {occurenceIndexes.length} occurences {occurenceIndexes.length > 0 ? `with index ${occurenceIndexes.map((num, i) => i == occurenceIndexes.length-1 && occurenceIndexes.length > 1 ? ' and '+num+1 : num+1)}` : ''}</h6>
+                        <h6>Full Text contains {occurenceIndexes.length} occurences {occurenceIndexes.length > 0 ? `with index ${occurenceIndexes.map((num, i) => i == occurenceIndexes.length-1 && occurenceIndexes.length > 1 ? ' and '+(num+1) : (num+1) )}` : ''}</h6>
                         <h3 className="text-caption">{parse(htmlElementOfFullText)}</h3>
                     </React.Fragment>
             }
